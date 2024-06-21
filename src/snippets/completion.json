@@ -408,7 +408,7 @@
             "body": "loadTons()",
             "description": [
                 "<TvmSlice>.loadTons() returns (uint128);\n",
-                "Loads (deserializes) VarUInteger 16 and returns an unsigned 128-bit integer."
+                "Loads (deserializes) varuinteger 16 and returns an unsigned 128-bit integer."
             ]
         },
         "<TvmSlice>.loadIntLE2": {
@@ -807,9 +807,9 @@
         },
         "<TvmBuilder>.storeInt": {
             "prefix": ".storeInt",
-            "body": "storeInt(${1:int256 value}, ${2:uint9 bitSize})",
+            "body": "storeInt(${1:int257 value}, ${2:uint9 bitSize})",
             "description": [
-                "<TvmBuilder>.storeInt(int256 value, uint9 bitSize);\n",
+                "<TvmBuilder>.storeInt(int257 value, uint9 bitSize);\n",
                 "Stores a signed integer value with given bitSize in the TvmBuilder."
             ]
         },
@@ -893,7 +893,7 @@
             "body": "storeTons(${1:uint128 value}})",
             "description": [
                 "<TvmBuilder>.storeTons(uint128 value);\n",
-                "Stores (serializes) an integer value and stores it in the builder as VarUInteger 16. See TL-B scheme."
+                "Stores (serializes) an integer value and stores it in the builder as varuinteger 16. See TL-B scheme."
             ]
         },
         "<TvmBuilder>.toExoticCell": {
@@ -1245,7 +1245,7 @@
             "prefix": ".balance",
             "body": "balance",
             "description": [
-                "address(this).balance returns (varUint16);\n",
+                "address(this).balance returns (varuint16);\n",
                 "Returns the balance of this contract in nanoevers.\n"
             ]
         },
@@ -1310,10 +1310,10 @@
         },
         "<address>.transfer": {
             "prefix": ".transfer",
-            "body": "transfer(${1:varUint16 value}, ${2:bool bounce}, ${3:uint16 flag}, ${4:TvmCell body}, ${5:ExtraCurrencyCollection currencies})",
+            "body": "transfer(${1:varuint16 value}, ${2:bool bounce}, ${3:uint16 flag}, ${4:TvmCell body}, ${5:ExtraCurrencyCollection currencies})",
             "description": [
                 "<address>.transfer(",
-                "      varUint16 value, ",
+                "      varuint16 value, ",
                 "      bool bounce, ",
                 "      uint16 flag, ",
                 "      TvmCell body,",
@@ -1559,7 +1559,7 @@
             "prefix": "msg.value",
             "body": "msg.value",
             "description": [
-                "msg.value returns (varUint16);\n",
+                "msg.value returns (varuint16);\n",
                 "Returns:\n\tBalance of the inbound message in nanoevers for internal message.\n\t0 for external message.\n\tUndefined value for tick/tock transaction."
             ]
         },
@@ -1622,7 +1622,7 @@
             "prefix": "msg.forwardFee",
             "body": "msg.forwardFee",
             "description": [
-                "msg.forwardFee returns (varUint16);\n",
+                "msg.forwardFee returns (varuint16);\n",
                 "Returns:\n - the forward fee for the internal inbound message.\n - 0 for the external inbound message.\n"
             ]
         },
@@ -1630,7 +1630,7 @@
             "prefix": "msg.importFee",
             "body": "msg.importFee",
             "description": [
-                "msg.importFee returns (varUint16);\n",
+                "msg.importFee returns (varuint16);\n",
                 "Returns:\n - the field import_fee for external inbound message. Note: field import_fee is set offchain by user as they want and does not reflect the real import fee of the message.\n - 0 for the internal inbound message."
             ]
         },
@@ -2101,7 +2101,7 @@
             "prefix": "tx.storageFee",
             "body": "tx.storageFee",
             "description": [
-                "tx.storageFee returns (varUint16);\n",
+                "tx.storageFee returns (varuint16);\n",
                 "Returns the storage fee paid in the current transaction.\n"
             ]
         },
@@ -2253,7 +2253,7 @@
                     "value: uint128\n",
                     "call: {function, [callbackFunction,] arg0, arg1, arg2, ...}\n",
                     "bounce: bool\n",
-                    "currencies: mapping(uint32 => varUint32)\n",
+                    "currencies: mapping(uint32 => varuint32)\n",
                     "stateInit: TvmCell\n",
                 "})\n",
                 "returns (TvmCell);\n",
@@ -3627,6 +3627,11 @@
             "body": "int256",
             "description": ""
         },
+        "int257": {
+            "prefix": "int256",
+            "body": "int256",
+            "description": "int257 is an alias for int"
+        },
         "uint": {
             "prefix": "uint",
             "body": "uint",
@@ -3662,37 +3667,37 @@
             "body": "uint256",
             "description": ""
         },
-        "varInt16": {
-            "prefix": "varInt16",
-            "body": "varInt16",
+        "varint16": {
+            "prefix": "varint16",
+            "body": "varint16",
             "description": "Use this type if you want to store or send integers, and they usually have small size."
         },
-        "varInt32": {
-            "prefix": "varInt32",
-            "body": "varInt32",
+        "varint32": {
+            "prefix": "varint32",
+            "body": "varint32",
             "description": "Use this type if you want to store or send uintegers, and they usually have small size."
         },
-        "varUint": {
-            "prefix": "varUint",
-            "body": "varUint",
+        "varint": {
+            "prefix": "varuint",
+            "body": "varuint",
             "description": "Use this type if you want to store or send uintegers, and they usually have small size."
         },
-        "varUint16": {
-            "prefix": "varUint16",
-            "body": "varUint16",
+        "varuint16": {
+            "prefix": "varuint16",
+            "body": "varuint16",
             "description": "Use this type if you want to store or send uintegers, and they usually have small size."
         },
         "coins": {
             "prefix": "coins",
             "body": "coins",
             "description": [
-                "coins` is an alias for `varUint16`\n",
+                "coins` is an alias for `varuint16`\n",
                 "Use this type if you want to store or send uintegers, and they usually have small size."
             ]
         },
-        "varUint32": {
-            "prefix": "varUint32",
-            "body": "varUint32",
+        "varuint32": {
+            "prefix": "varuint32",
+            "body": "varuint32",
             "description": "Use this type if you want to store or send uintegers, and they usually have small size."
         },
         "ufixed": {
